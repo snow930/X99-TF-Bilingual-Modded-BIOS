@@ -9,6 +9,19 @@
 
 ---
 
+## 实机效果图
+
+![主菜单实机效果图](screenshots/01-main-menu.jpg)
+*主菜单（Main）：BIOS 信息、131072 MB 内存与双语界面，右栏置顶 `[System Language]` 英文对照*
+
+| | |
+| :---: | :---: |
+| ![高级菜单](screenshots/02-advanced-menu.jpg)<br>**高级（Advanced）**：ACPI、监控芯片、PCI、CSM、NVMe 等完整汉化 | ![Intel 平台设置](screenshots/03-intel-platform-setup.jpg)<br>**Intel 平台设置**：原 `IntelRCSetup` 统一精译与超频总开关入口 |
+| ![核心最大超频倍频](screenshots/04-core-max-oc-ratio.jpg)<br>**核心最大超频倍频**：右栏 `[Core Max OC Ratio]` 与 `[本固件]` 生效说明 | ![核心电压偏移](screenshots/05-core-voltage-offset.jpg)<br>**核心电压偏移**：IA 核心独立负压（示例 `-65 mV`）与生效范围说明 |
+| ![PCI 子系统设置](screenshots/06-pci-above-4g-rebar.jpg)<br>**PCI 子系统设置**：`Above 4G Decoding` 默认启用，支持大显存与 ReBAR | ![CSM 兼容性配置](screenshots/07-csm-boot-option-filter.jpg)<br>**CSM 兼容性配置**：`启动项过滤` 弹出选单与右栏帮助 0 缺字显示 |
+
+---
+
 ## 一、本版核心架构与特性
 
 1. **只改 BIOS 区模块**：Flash Descriptor、ME、DMI/机型信息、开机 LOGO 与 FV3 卷均与官方原片逐字节一致（FV3 原生不含 `0x306F2` 微码，POST 阶段天然保持 `MSR 0x8B = 0`）。
@@ -50,6 +63,7 @@ flash_kit/
 ├─ X_ZH.bat / X_ZH_NOBACKUP.bat  # DOS：整片刷写脚本
 ├─ fpt.exe / fptw64.exe / ...    # 官方 DOS / Windows FPT 刷写工具链
 ├─ README.md / README_EN.md      # 中英文说明文档
+├─ screenshots/                  # 实机 BIOS 界面效果图（7 张）
 └─ bak/
    ├─ TFV30JX.bin                                                            # 官方原厂 BIOS
    └─ TFV30JX_ZH-BILINGUAL-TURBO-VOLT-CLR-REBAR-CSMOFF-4GON-C2-C6OFF.rom     # 当前主镜像 TFZH.ROM 归档副本

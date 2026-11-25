@@ -9,6 +9,19 @@ Integrates a **menu-driven Haswell-EP (`0x306F2`) All-Core Turbo engine**, **Chi
 
 ---
 
+## Real-Hardware Screenshots
+
+![Main Menu](screenshots/01-main-menu.jpg)
+*Main Menu: BIOS info, 131072 MB memory, and bilingual UI with `[System Language]` English reference pinned at top-right*
+
+| | |
+| :---: | :---: |
+| ![Advanced Menu](screenshots/02-advanced-menu.jpg)<br>**Advanced Menu**: ACPI, NCT5532D Super I/O, PCI Subsystem, CSM, and NVMe menus | ![Intel Platform Setup](screenshots/03-intel-platform-setup.jpg)<br>**Intel Platform Setup (`IntelRCSetup`)**: Processor, Power Management, and OverClocking entry |
+| ![Core Max OC Ratio](screenshots/04-core-max-oc-ratio.jpg)<br>**Core Max OC Ratio**: `[Core Max OC Ratio]` with `[本固件]` auto full-turbo / manual cap notes | ![Core Voltage Offset](screenshots/05-core-voltage-offset.jpg)<br>**Core Voltage Offset**: Independent IA undervolt (`-65 mV` shown) with range and step notes |
+| ![PCI Subsystem Settings](screenshots/06-pci-above-4g-rebar.jpg)<br>**PCI Subsystem Settings**: `Above 4G Decoding` enabled by default for large VRAM and ReBAR | ![CSM Configuration](screenshots/07-csm-boot-option-filter.jpg)<br>**CSM Configuration**: Bilingual popup menu and `[Boot option filter]` help with zero missing glyphs |
+
+---
+
 ## 1. Key Features & Architecture
 
 - **Terminology-Refined Bilingual UI & Full Proofread Help**: Built directly from stock `TFV30JX.bin` English strings. Left-pane menus use concise, hardware-accurate Chinese (clearly distinguishing `CLR/Ring` from `Uncore`, renaming `IntelRCSetup` to `Intel 平台设置`, and keeping standard acronyms clean without wrapping). Right-pane `Item Help` pins `[Original English Name]` on line 1 for instant cross-reference, provides proofread Chinese descriptions across all menus, and adds `[本固件]` runtime notes on key turbo/undervolt/power/C-state items. Includes a complete `SimSun 16px` 1bpp `AMITSE` `SimpleFont` (`958` glyphs total, **0 missing glyphs**).
