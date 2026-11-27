@@ -5,7 +5,8 @@
 Custom BIOS kit based on the official `TFV30JX.bin` (X99-TF V3.0 JX, 2022-09-16).  
 Integrates a **menu-driven Haswell-EP (`0x306F2`) All-Core Turbo engine**, **Chinese/English bilingual setup UI**, **independent IA & CLR negative voltage offsets**, **Resizable BAR**, and a **Windows 11 24H2/25H2 Microsoft-signed microcode bypass toggle**.
 
-> **Flashing a modified BIOS carries risk.** Always verify your board model (`X99-TF V3.0 JX`, 16 MB SPI flash) and keep a full 16 MB backup.
+> **Flashing a modified BIOS carries risk.** Always verify your board model (`X99-TF V3.0 JX`, 16 MB SPI flash) and keep a full 16 MB backup.  
+> **Community Feedback**: Bilibili commenters reported that **HUANANZHI X99-8M** works normally with this BIOS (cross-flashing carries extra risk — always back up your stock SPI flash first and consider flashing the 8 MB BIOS region only).
 
 ---
 
