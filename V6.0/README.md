@@ -42,8 +42,8 @@ V6.0/
 
 | 文件 | 大小 (Bytes) | MD5 | SHA-256 |
 |---|---:|---|---|
-| **`TFZH_V60_8M.bin`** | 8,388,608 | `85211695ba7147d975d5b34d39a3bf70` | `1d12ed1878532ca1e596eaf5696e9c55b0f165fe4f86580148bac4bf5225a1fb` |
-| **`TFZH_V60.ROM`** | 16,777,216 | `5a02d204320af8d9a6ee90f13cfb2da9` | `6dfbb168e7dceeba7b8eb974773ba695195579a49deb39562a349642a90b4ea8` |
+| **`TFZH_V60_8M.bin`** | 8,388,608 | `f8db6185384edf01cd2a913b8f24a86b` | `f7e9c1674e57068c9b6cdcc7b04ee11a0fb3e6c4d723a43f079773419b41b012` |
+| **`TFZH_V60.ROM`** | 16,777,216 | `88f2e0c5eff3534d5ab16a8ec6af8584` | `d10fa20ede9ed089115e6b033a899b5b1bbb0ef1d4efe0df2a80a6f11eca5585` |
 | `bak/TFV60.bin` | 16,777,216 | `e2548f8e26887df3bce619cd26a44cf2` | `ed70ab6b5318c7c030ef6600974a3f5768cff0d344ee4f3b102f14126d36a6c2` |
 
 ---
