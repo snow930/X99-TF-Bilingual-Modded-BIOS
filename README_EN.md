@@ -2,11 +2,12 @@
 
 > 中文说明: [README.md](README.md)
 
-This repository provides two standalone modded BIOS flash kits for the **HUANANZHI X99-TF** motherboard, organized into separate directories:
+This repository provides standalone modded BIOS flash kits for **HUANANZHI X99-TF / X99-T8** motherboards, organized into separate directories:
 
 | Directory | Stock Base | Target / Architecture | Resizable BAR | Highlights |
 |---|---|---|---|---|
-| **[`V3.0/`](V3.0/README_EN.md)** | `TFV30JX.bin` (V3.0 JX, 2022-09-16) | Native X99-TF V3.0 full kit | `ReBarDxe` + `ReBarState.exe` | Real-hardware verified, `A134C001` dynamic Haswell-EP turbo + IA/CLR undervolt, bilingual UI + 16px bitmap font |
-| **[`V6.0/`](V6.0/README.md)** | `TFV60.bin` (V6.0 Stock, 2026-04-17) | Hybrid for X99-TF V3.0 (V3.0 IFD/ME + modded V6.0 BIOS region) | **Native AMI `PciBus` ReBAR (default Enabled)** | Relocated `A134C001`, `0x306F2` removed / `0x406F1` kept, full bilingual UI (0 missing glyphs), TPM 2.0, SmartFan IV, S5 RTC Wake, PCIe L1/ASPM disabled |
+| **[`V3.0/`](V3.0/README_EN.md)** | `TFV30JX.bin` (X99-TF V3.0 JX, 2022-09-16) | Native X99-TF V3.0 full kit | `ReBarDxe` + `ReBarState.exe` | Real-hardware verified, `A134C001` dynamic Haswell-EP turbo + IA/CLR undervolt, bilingual UI + 16px bitmap font |
+| **[`V6.0/`](V6.0/README.md)** | `TFV60.bin` (X99-TF V6.0 Stock, 2026-04-17) | Hybrid for X99-TF V3.0 (V3.0 IFD/ME + modded V6.0 BIOS region) | **Native AMI `PciBus` ReBAR (default Enabled)** | Relocated `A134C001`, `0x306F2` removed / `0x406F1` kept, full bilingual UI (0 missing glyphs), TPM 2.0, SmartFan IV, S5 RTC Wake, PCIe L1/ASPM disabled |
+| **[`x99-t/`](x99-t/README.md)** | `T8V60.bin` (X99-T8 V6.0 Stock, 2026-04-17) | **Native X99-T8 GAMING V6.0** (stock V6.0 IFD/ME + stock `X99-T8` DMI) | **Native AMI `PciBus` ReBAR (default Enabled)** | Full TF-style mod set (`A134C001` dynamic turbo + IA/CLR undervolt, `0x306F2` removed / `0x406F1` kept, bilingual UI 0 missing glyphs, updated `fparts.txt`) |
 
-> **Warning**: Always back up your SPI flash before flashing. On X99-TF V3.0 boards testing `V6.0/`, prefer `V6.0/FLASH_WINDOWS_V60_BIOS_ONLY.bat` (8 MB BIOS region only) so V3.0 IFD/ME remains untouched and rollback to `V3.0/` is instant.
+> **Warning**: Always back up your SPI flash before flashing and verify your exact board model. On X99-TF V3.0 boards testing `V6.0/`, prefer `V6.0/FLASH_WINDOWS_V60_BIOS_ONLY.bat` (8 MB BIOS region only); on X99-T8 V6.0 boards, prefer `x99-t/FLASH_WINDOWS_T8_BIOS_ONLY.bat`.
