@@ -1,4 +1,4 @@
-# 华南金牌 X99-TF 双语全动态鸡血 + IA/CLR 独立调压 + ReBAR 魔改 BIOS 套件
+#  X99 双语全动态鸡血 + IA/CLR 独立调压 + ReBAR 魔改 BIOS 套件
 
 > English version: [README_EN.md](README_EN.md)
 
