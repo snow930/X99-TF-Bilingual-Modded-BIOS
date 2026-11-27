@@ -4,13 +4,13 @@
 
 本仓库提供基于不同官方/汉化基底深度定制的 **X99-TF / X99-T8 / X99-XD3 / 火神革命 X99** 双语/中文魔改 BIOS 刷写套件，分别位于独立目录：
 
-| 目录 | 基底版本 | 适用场景 | ReBAR 方案 | E5 v4 微码 | 状态 |
-|---|---|---|---|---|---|
-| **[`V3.0/`](V3.0/README.md)** | `TFV30JX.bin`（X99-TF V3.0 JX，2022-09-16） | X99-TF V3.0 旧主板（原厂同代基底） | `ReBarDxe` + `ReBarState.exe` | 保留 (`0x0B000038`) | ✅ 实机长期稳定验证 |
-| **[`V6.0/`](V6.0/README.md)** | `TFV60.bin`（X99-TF V6.0 默认，2026-04-17） | X99-TF V3.0 旧主板跨代移植（保留 V3.0 IFD/ME） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B00002E`) | 🆕 新增 TPM2 / SmartFan IV / S5 定时开机 / PCIe L1 关闭 |
-| **[`x99-t/`](x99-t/README.md)** | `T8V60.bin`（X99-T8 V6.0 默认，2026-04-17） | **X99-T8 GAMING V6.0** 主板（原厂 V6.0 IFD/ME + 原厂 `X99-T8` DMI） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B00002E`) | 🆕 X99-T8 V6.0 专属魔改套件（含新版 `fparts.txt`） |
-| **[`X99-XD3/`](X99-XD3/README.md)** | `X9XD3003_ZH_16M.bin`（X99-XD3 V2.11 汉化版） | **X99-XD3** 主板（原厂 IFD/ME + 原厂 `X99-XD3` DMI） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B000038`) | 🆕 全动态 `A134C001` (`IntelSetup=0x17EC`) + IA/CLR 调压 + 原生 ReBAR |
-| **[`火神革命X99/`](火神革命X99/README.md)** | `火神革命X99_PF7_ZH_16M.rom`（火神革命 PF7 汉化版，2021-06-28） | **火神革命 X99 (PF7)** 主板（保留原厂 IFD/ME + `HSGM` DMI + 原汉化字库） | `ReBarDxe` + `ReBarState.exe` | 保留 (`0x0B000038`) | 🆕 按 TF V3.0 体系集成 `A134C001` 全动态鸡血 + IA/CLR 独立调压 + ReBAR |
+| 目录 | 基底版本 | 适用场景 | ReBAR 方案 | E5 v4 微码 | 实机测试 | 状态 |
+|---|---|---|---|---|---|---|
+| **[`V3.0/`](V3.0/README.md)** | `TFV30JX.bin`（X99-TF V3.0 JX，2022-09-16） | X99-TF V3.0 旧主板（原厂同代基底） | `ReBarDxe` + `ReBarState.exe` | 保留 (`0x0B000038`) | ✅ 已实机测试 | ✅ 长期稳定验证 |
+| **[`V6.0/`](V6.0/README.md)** | `TFV60.bin`（X99-TF V6.0 默认，2026-04-17） | X99-TF V3.0 旧主板跨代移植（保留 V3.0 IFD/ME） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B00002E`) | ⚠️ 未实机测试 | 🆕 新增 TPM2 / SmartFan IV / S5 定时开机 / PCIe L1 关闭 |
+| **[`x99-t/`](x99-t/README.md)** | `T8V60.bin`（X99-T8 V6.0 默认，2026-04-17） | **X99-T8 GAMING V6.0** 主板（原厂 V6.0 IFD/ME + 原厂 `X99-T8` DMI） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B00002E`) | ⚠️ 未实机测试 | 🆕 X99-T8 V6.0 专属魔改套件（含新版 `fparts.txt`） |
+| **[`X99-XD3/`](X99-XD3/README.md)** | `X9XD3003_ZH_16M.bin`（X99-XD3 V2.11 汉化版） | **X99-XD3** 主板（原厂 IFD/ME + 原厂 `X99-XD3` DMI） | **官方原生 `PciBus` ReBAR（免工具）** | 保留 (`0x0B000038`) | ⚠️ 未实机测试 | 🆕 全动态 `A134C001` (`IntelSetup=0x17EC`) + IA/CLR 调压 + 原生 ReBAR |
+| **[`火神革命X99/`](火神革命X99/README.md)** | `火神革命X99_PF7_ZH_16M.rom`（火神革命 PF7 汉化版，2021-06-28） | **火神革命 X99 (PF7)** 主板（保留原厂 IFD/ME + `HSGM` DMI + 原汉化字库） | `ReBarDxe` + `ReBarState.exe` | 保留 (`0x0B000038`) | ⚠️ 未实机测试 | 🆕 按 TF V3.0 体系集成 `A134C001` 全动态鸡血 + IA/CLR 独立调压 + ReBAR |
 
 ---
 
