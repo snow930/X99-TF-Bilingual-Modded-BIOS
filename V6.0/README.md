@@ -21,7 +21,11 @@
    - 精准复用 V3.0 精校双语词典并补齐全部 186 条 V6.0 新增菜单/帮助词条（含新版 `F3 / F4 / <K> / <M>` 快捷键提示）；
    - `AMITSE` 嵌入 `103` 窄 + `807` 宽 16px 1bpp 宋体点阵字库，全固件 **0 缺字**。
 6. **四处默认值全同步**：
-   - `FV_NVRAM (StdDefaults)`、`9221315B`、`FE612B72 ($SPF)` 及 `Setup`/`Platform` IFR 同步写入：`OverClocking Feature = Enabled`、`Overclocking Lock = Disable`、`CPU C State = Enable`、`Package C State limit = C2`、`CPU C3/C6 report = Disable`、`Above 4G = Enabled`、`Re-Size BAR = Enabled`、`CSM = Disabled`、`ACPI S3 = Disabled`。
+   - `FV_NVRAM (StdDefaults)`、`9221315B`、`FE612B72 ($SPF)` 及 `Setup`/`Platform` IFR 同步写入：`OverClocking Feature = Enabled`、`Overclocking Lock = Disable`、`CPU C State = Enable`、`Package C State limit = C2`、`CPU C3/C6 report = Disable`、`Above 4G = Enabled`、`Re-Size BAR = Enabled`、`CSM = Disabled`、`ACPI S3 = Disabled`、**`xHCI Mode = Auto (2)`**。
+7. **R2 实机问题修复（基于 R1 / `1e29b00` 改进）**：
+   - **保留 R1 超频与界面修复**：保留 `Platform`（`.text` + IFR）超频菜单显示、`NCT5532DPeiInit` 与 `SioDxeInit`（V3.0 65 项 HWM 表 + `0x1570` RMW 修正）等全部已验证改进；
+   - **完整修复 V3.0 `NCT5532D` BIOS 温度显示 `255`**：修补 `Setup`（`899407D7`）硬件监控传感器读取函数——将 `系统温度` 从 Bank 4 `0x91` 改为 V3.0 实机对应的 **`0x92`（AUXTIN0）**，将 `系统温度 3` 从 `NCT5532D` 不存在的 `0x95`（读取恒返回 `0xFF = 255`）改为 **`0x91`（CPUTIN）**，并将 `CPU 温度`（Bank 7 `0x20`）及全部 13 处风扇/电压读取器的 Bank 选择位恢复为 V3.0 原厂 `HBACS=1`（`0x87` / `0x84`）；
+   - **修复开机跑码 `B7 → 9A` 卡死**：确保 `FV_NVRAM` 仅含干净 `StdDefaults`、`FV_NVRAM_BACKUP`（`0x840000..0x87FFFF`）为全 `0xFF`、前 8 MB 为干净 V3.0 原厂 `IFD+ME`；并将四处默认 **`xHCI Mode`** 由 `Smart Auto (3)` 改为 **`Auto (2)`**（防止首次进 Windows 后二次开机时 C612 内置 xHCI 在预启动阶段切换导致 `Uhcd` 卡 `9A`，Windows 内 USB 3.0 仍满速工作）。
 
 ---
 
@@ -29,8 +33,8 @@
 
 ```text
 V6.0/
-├─ TFZH_V60_8M.bin                 # 8MB BIOS 区镜像（V3.0 主板首选刷写）
-├─ TFZH_V60.ROM                    # 16MB 完整混合镜像（V3.0 原厂 IFD/ME + 魔改 V6.0 BIOS 区）
+├─ TFZH_V60_8M.bin                 # R2 8MB BIOS 区镜像（V3.0 主板首选刷写）
+├─ TFZH_V60.ROM                    # R2 16MB 完整混合镜像（干净 V3.0 IFD/ME + 魔改 V6.0 R2 BIOS 区）
 ├─ FLASH_WINDOWS_V60_BIOS_ONLY.bat # Windows 首选：自动提权 + 备份 + 仅刷 8MB BIOS 区
 ├─ FLASH_WINDOWS_V60_FULL.bat      # Windows 备用：自动提权 + 备份 + 16MB 整片刷写
 ├─ WIN11_MCUPDATE_TOGGLE.bat       # Windows 11 24H2/25H2 微软签名微码旁路脚本
@@ -42,19 +46,19 @@ V6.0/
 
 | 文件 | 大小 (Bytes) | MD5 | SHA-256 |
 |---|---:|---|---|
-| **`TFZH_V60_8M.bin`** | 8,388,608 | `f8db6185384edf01cd2a913b8f24a86b` | `f7e9c1674e57068c9b6cdcc7b04ee11a0fb3e6c4d723a43f079773419b41b012` |
-| **`TFZH_V60.ROM`** | 16,777,216 | `88f2e0c5eff3534d5ab16a8ec6af8584` | `d10fa20ede9ed089115e6b033a899b5b1bbb0ef1d4efe0df2a80a6f11eca5585` |
+| **`TFZH_V60_8M.bin`（R2）** | 8,388,608 | `006f51b693f0c4f886497b16206755ad` | `c85902cdab1ca69e9bd0ad8d7ef9d458a4648a25b4792a22ebc27a44174d2303` |
+| **`TFZH_V60.ROM`（R2）** | 16,777,216 | `04b8cd6fcdeb8b52b524363cadd4f296` | `2cd17910378516d5e8b79598503fba2bbce7a6529e4b5299335c87c4feaf0571` |
 | `bak/TFV60.bin` | 16,777,216 | `e2548f8e26887df3bce619cd26a44cf2` | `ed70ab6b5318c7c030ef6600974a3f5768cff0d344ee4f3b102f14126d36a6c2` |
 
 ---
 
-## 三、刷写与回退流程
+## 三、刷写、调压验证与回退流程
 
 1. **刷入（推荐仅刷 8 MB BIOS 区）**：
    - 将 `V6.0` 目录置于非中文短路径下，右键 **`FLASH_WINDOWS_V60_BIOS_ONLY.bat`** → **以管理员身份运行**（先备份 `BACKUP_BIOS_PRE_V60.BIN`，FPT 提示时按 `Y`）。
-2. **清 CMOS 与检查**：
-   - 刷完关机拔电清 CMOS，或进 BIOS 按 **`F3`** 加载优化默认值并按 **`F4`** 保存重启（注意 V6.0 快捷键已从 `F9/F10` 变更为 `F3/F4`）。
-   - 进入 `Intel 平台设置 → 超频设置` 按需设定核心/环形总线负压与倍频（默认负压 `0 mV` 零风险）。
+2. **清 CMOS 与分段验证（重要）**：
+   - 刷完关机拔电清 CMOS，开机按 **`DEL`** 进入 BIOS 检查 `硬件监控` 温度/转速/电压是否正常，先保持默认 **`0 mV`** 负压按 **`F4`** 保存重启进入系统，再冷重启一次确认不会卡 `9A`。
+   - 确认稳定后再进入 `Intel 平台设置 → 超频设置` 逐步下调核心/环形总线负压（注意：`A134C001` 在 DXE 第一阶段运行且此时主板诊断灯停留在 `9A`，若负压过低导致冷启动调压瞬间死机，诊断灯也会停在 `9A`）。
 3. **Windows 11 微码旁路**：
    - 如尚未启用微码旁路，运行 **`WIN11_MCUPDATE_TOGGLE.bat`** 按 `Y` 启用；本版原生 ReBAR 开箱生效，**无需运行 `ReBarState.exe`**。
 4. **无损回退到 V3.0 稳定版**：
